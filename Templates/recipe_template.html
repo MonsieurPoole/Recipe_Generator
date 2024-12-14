@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ recipe['Recipe Name'] }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .demoTitle { color: #003300; }
+        h2 { color: #000000; }
+        p { text-align: center; color: #000000; }
+    </style>
+</head>
+<body>
+    <h1 class="css" style="text-align: center;">
+        <span style="color: #003300;">
+            <span style="color: #000000;">
+                <em>{{ recipe['Dinner_Name'] }}</em>
+            </span>
+        </span>
+    </h1>
+    <p style="text-align: center;">
+        <span style="color: #003300;">
+            <span style="color: #000000;">
+                <em>
+                    <img src="{{ recipe.image_path }}" alt="Image of {{ recipe['Dinner_Name'] }}" width="200" height="200" />                </em>
+            </span>
+        </span>
+    </p>
+    <p>{{ recipe.description }}</p>
+    <p>
+        <span style="color: #003300;">
+            <span style="color: #000000;">
+                <em>SERVING SIZE:&nbsp;</em>
+            </span>
+        </span>
+    </p>
+    <p>
+        <span style="color: #003300;">
+            <span style="color: #000000;">
+                <em>{{ recipe['Servings'] }}</em>
+            </span>
+        </span>
+    </p>
+    <p>&nbsp;</p>
+    <h2 style="text-align: center;">
+        <span style="color: #000000;">
+            <em>DIRECTIONS:</em>
+        </span>
+    </h2>
+    <p style="text-align: center;">
+        <span style="color: #000000;">
+            <em>{{ recipe['Directions'] }}</em>
+        </span>
+    </p>
+    <h2 style="text-align: center;">
+        <span style="color: #000000;">
+            <em>Ingredients:</em>
+        </span>
+    </h2>
+    <p>&nbsp;</p>
+    <p style="text-align: center;">
+        <span style="color: #000000;">
+            <em>{{ recipe['Ingredients'] }}</em>
+        </span>
+    </p>
+</body>
+</html>
