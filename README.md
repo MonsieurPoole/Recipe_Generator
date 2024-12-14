@@ -1,4 +1,4 @@
-# Recipie_Generator
+# Recipe_Generator
 Recipe Generator is based on the Aldi grocery store. It contains about 8 months of weekly 7-day meals.
 The first page lists all of the ingredients for each of the 7 randomly selected meals, for easier review when grocery shopping.
 The servings may be per adult or how many items the ingredients make, such as 4 spring rolls.
