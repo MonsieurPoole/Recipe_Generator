@@ -22,7 +22,8 @@
         <span style="color: #003300;">
             <span style="color: #000000;">
                 <em>
-                    <img src="{{ recipe.image_path }}" alt="Image of {{ recipe['Dinner_Name'] }}" width="200" height="200" />                </em>
+                    <img src="{{ recipe.image_path }}" alt="Image of {{ recipe['Dinner_Name'] }}" width="250" height="200" />
+                </em>
             </span>
         </span>
     </p>
@@ -38,6 +39,20 @@
         <span style="color: #003300;">
             <span style="color: #000000;">
                 <em>{{ recipe['Servings'] }}</em>
+            </span>
+        </span>
+    </p>
+    <p>
+        <span style="color: #003300;">
+            <span style="color: #000000;">
+                <em>COOK TIME:&nbsp;</em>
+            </span>
+        </span>
+    </p>
+    <p>
+        <span style="color: #003300;">
+            <span style="color: #000000;">
+                <em>{{ recipe['Cook_Time'] }}</em>
             </span>
         </span>
     </p>
@@ -57,7 +72,6 @@
             <em>Ingredients:</em>
         </span>
     </h2>
-    <p>&nbsp;</p>
     <p style="text-align: center;">
         <span style="color: #000000;">
             <em>{{ recipe['Ingredients'] }}</em>
