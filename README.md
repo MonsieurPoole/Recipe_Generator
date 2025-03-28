@@ -11,4 +11,6 @@ If you wish to modify or create another HTML template, either keep the existing 
 
 *If you are on Linux, and using a flatpak version of your main web browser, ensure your permissions are set to 'allow /user access', otherwise, the images will not print to pdf.*
 
+Also, because i'm too lazy to upload new copies of the hundreds of images, go into the Images folder, and type 'mogrify -resize 250x200 *.png' to resize all the images so that they fit nicely on the final pdf. 
+
 Lastly, I highly recommend setting a chron job to run the main.py weekly so that you have a new PDF waiting for you on your grocery shopping day. 
