@@ -43,5 +43,6 @@ def main():
     html_files_to_convert = [ingredients_html_file] + recipe_html_files
     create_pdf_from_html(html_files_to_convert, output_pdf_file)
 
+
 if __name__ == "__main__":
     main()
