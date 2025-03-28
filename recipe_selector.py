@@ -1,28 +1,43 @@
 import pandas as pd
-
+import os
+from jinja2 import Environment, FileSystemLoader
+import pdfkit
 
 def select_random_recipes(file_path, num_recipes=7):
     df = pd.read_excel(file_path)
     random_recipes = df.sample(n=min(num_recipes, len(df)))
     return random_recipes
 
-
 def generate_ingredients_list(recipes):
-    ingredients_set = set()  # Use a set to avoid duplicates
-    ingredients_list = []  # Use a list to maintain order
+    meals_list = []  # List to hold meal dictionaries
 
     for index, recipe in recipes.iterrows():
-        # Directly use the 'Ingredients' column without splitting or stripping
-        ingredient = recipe['Ingredients']  # Get the ingredient string directly
-        if ingredient and ingredient not in ingredients_set:  # Check if the ingredient is not empty and not a duplicate
-            ingredients_set.add(ingredient)  # Add to the set to track duplicates
-            ingredients_list.append(ingredient)  # Add the ingredient to the list
+        # Create a dictionary for each meal
+        meal = {
+            'Dinner_Name': recipe['Dinner_Name'],  # Assuming you have a 'Dinner_Name' column
+            'Ingredients': recipe['Ingredients'].replace('\n', '<br>')  # Replace line breaks with <br>
+        }
+        meals_list.append(meal)  # Add the meal dictionary to the list
 
-    # Join the ingredients with a comma and space (or any other delimiter)
-    return '<br><br>'.join(ingredients_list)
+    return meals_list  # Return the list of meals
 
-# Example usage:
-# file_path = 'path_to_your_excel_file.xlsx'
-# recipes = select_random_recipes(file_path)
-# ingredients = generate_ingredients_list(recipes)
-# print(ingredients)
+def generate_ingredients_html(meals_list, output_file):
+    # Set up Jinja2 environment
+    templates_dir = os.path.join(os.path.dirname(__file__), 'Templates')  # Path to the templates folder
+    env = Environment(loader=FileSystemLoader(templates_dir))
+    template = env.get_template('ingredients_template.html')
+
+    # Render the HTML with the meals data
+    html_content = template.render(meals=meals_list)  # Pass the entire meals list
+
+    # Write the HTML content to a file
+    with open(output_file, 'w') as f:
+        f.write(html_content)
+
+# Example usage
+file_path =os.path.join('Data', 'Recipe_DB.xlsx') # Replace with your actual file path
+random_recipes = select_random_recipes(file_path)
+meals = generate_ingredients_list(random_recipes)
+
+# Generate the ingredients HTML page
+generate_ingredients_html(meals, 'ingredients.html')
